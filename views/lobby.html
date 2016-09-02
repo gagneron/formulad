@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title><%= title %></title>
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="js/angular-socket-io/socket.min.js"></script>
 	<script type="text/javascript">
 		var host = '<%= host %>';
 		
 	</script>
 </head>
 <body>
-<div class="container">
+<div class="container" ng-controller="LobbyController">
 	<h2>Hi <%= user.fullname %> </h2>
 	<!-- <h2>Hi <%= user.google.fullname %> </h2> -->
 	<div> <img src="<%= user.profilePic %>"></div>
 	<a href="/logout">logout</a>
-	<input type="text" id="newTableName" name="">
-	<div id="createTable">Create Table</div>
+	<input type="text" id="newTableName" name="" ng-model="newTableName">
+	<div id="createTable" ng-click="createTable()">Create Table</div>
 	<div class="tableListWrap">
-		<ul class="tableList"></ul>
+		<ul class="tableList">
+			<li ng-repeat="table in tables">
+				<a href="table/{{table.tableNum}}">{{table.tableName}}</a>
+			</li>
+		</ul>
 	</div>
 	<script type="text/javascript" src="js/lobby.js"></script>
 </div>

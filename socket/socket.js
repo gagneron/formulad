@@ -1,5 +1,6 @@
 module.exports = function(io, tables) {
 	var lobby = io.of('/lobby').on('connection', function(socket) {
+	// var lobby = io.on('connection', function(socket) {
 		console.log('connection made on server');
 		socket.emit('tableUpdate', JSON.stringify(tables)); // send to only the active socket
 		
