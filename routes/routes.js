@@ -43,15 +43,15 @@ module.exports = function(express, app, passport, config, tables) {
 
 	// START SET SESSION
 
-	router.get('/setcolor', function(req, res, next) {
-		req.session.favColor = "Red";
-		res.send('Setting favorite color');
-	});
+	// router.get('/setcolor', function(req, res, next) {
+	// 	req.session.favColor = "Red";
+	// 	res.send('Setting favorite color');
+	// });
 
-	// getting session info from a different route
-	router.get('/getcolor', function(req, res, next) {
-		res.send('favorite color: ' + (req.session.favColor === undefined ? "Not found": req.session.favColor));
-	});
+	// // getting session info from a different route
+	// router.get('/getcolor', function(req, res, next) {
+	// 	res.send('favorite color: ' + (req.session.favColor === undefined ? "Not found": req.session.favColor));
+	// });
 
 	// END GET SESSION
 

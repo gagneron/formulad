@@ -74,7 +74,7 @@ app.set('port', process.env.PORT || 3000);
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 require('./socket/socket.js')(io, tables);
-require('./socket/tableSocket.js')(io, tables);
+// require('./socket/tableSocket.js')(io, tables);
 server.listen(app.get('port'), function() {
 	console.log('on port: ' + app.get('port'));
 });
