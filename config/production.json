@@ -4,12 +4,12 @@
 	"fb": {
 		"appID": "1079310918819326",
 		"appSecret": "fa7d90f6ec8ac0f37d49206566837d7c",
-		"callbackURL": "http://localhost:3000/auth/facebook/callback"
+		"callbackURL": "http://formulad.herokuapp.com/auth/facebook/callback"
 	},
 	"googleAuth": {
 		"appID": "712428671777-upj7sa09h7ccom0ng03cm0vknpov47df.apps.googleusercontent.com",
 		"appSecret": "gn4poH9DU4qgUQC7jkXQKNeV",
-		"callbackURL": "http://localhost:3000/auth/google/callback"
+		"callbackURL": "http://formulad.herokuapp.com/auth/google/callback"
 	},
 	"host": "http://formulad.herokuapp.com"
 
