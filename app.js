@@ -30,7 +30,7 @@ if (env === "development") {
 		secret: config.sessionSecret, 
 		store: new ConnectMongo({
 			// url: config.dbURL, // used if there wasn't mongoose (with mongoose its redundant)
-			mongoose_connection: mongoose.connections[0],
+			mongooseConnection: mongoose.connections[0],
 			stringify: true
 		}),
 		saveUninitialized: true, 
