@@ -9,8 +9,7 @@ var express = require('express'),
 	passport = require('passport'),
 	FacebookStrategy = require('passport-facebook').Strategy,
 	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-	tables = []
-	;
+	tables = [];
 
 app.set('views', path.join(__dirname, 'views'));
 // first param is the variable we will use to direc to the views folder, which is in the 2nd param
