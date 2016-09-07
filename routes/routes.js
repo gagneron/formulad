@@ -37,8 +37,11 @@ module.exports = function(express, app, passport, config, tables) {
 
 	router.get('/table/:id', securePages, function(req, res, next) {
 		var tableName = findTitle(req.params.id);
-		res.render('table', {user: req.user, tableNum: req.params.id, tableName: tableName, host: config.host});
-
+		var tableInfo = {
+			tableName: tableName,
+			tableNum: req.params.id
+		};
+		res.render('table', {user: req.user, tableInfo, host: config.host});
 	});
 
 	// START SET SESSION

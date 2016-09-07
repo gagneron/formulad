@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACT,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,gBAAgB;EAC7B,WAAW,EAAE,sCAAsC;EACnD,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,MAAM;EACd,SAAS,EAAE,KAAK;EAChB,SAAS,EAAE,KAAK;EAChB,OAAO,EAAE,eAAe",
+"sources": ["../../private/sass/table.scss"],
+"names": [],
+"file": "table.css"
+}

@@ -1,3 +1,8 @@
 .container {
-	background-color: yellow;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+.loginIcon {
+	width: 200px;
 }

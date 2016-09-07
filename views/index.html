@@ -2,16 +2,22 @@
 <html>
 <head>
 	<title><%= title %></title>
-	<link rel="stylesheet" type="text/css" href="lobby.css">
+	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
+	<link rel="stylesheet" type="text/css" href="styles/lobby.css">
 </head>
 <body>
 <div class="container">
-	<header><%= title %></header>
-	<a href="/auth/facebook">Login via Facebook</a>
-	<a href="/auth/google">Login via Google</a>
+	<header>
+		<h1><%= title %></h1>
+	</header>
+	<div class="loginBtns">
+		<a href="/auth/facebook" class="loginBtn"><img class="loginIcon" src="images/facebook-login.png"></a>
+		<a href="/auth/google" class="loginBtn"><img class="loginIcon" src="images/login-google.png"></a>
+	</div>
 </div>
 <script type="text/javascript">
 	var x = "<%= title %>";
 </script>
+<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

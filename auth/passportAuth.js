@@ -50,9 +50,11 @@ module.exports = function(passport, FacebookStrategy, GoogleStrategy, config, mo
 			} else {
 				// create a new user in mongoLab account;
 				var newUser = new userModel({
-					profileID: profile.id,
-					fullname: profile.displayName,
-					profilePic: profile.photos[0].value || ""
+					facebook: {
+						profileID: profile.id,
+						fullname: profile.displayName,
+						profilePic: profile.photos[0].value || ""
+					}
 				});
 
 				newUser.save(function(err) {

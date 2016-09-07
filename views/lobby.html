@@ -2,31 +2,39 @@
 <html ng-app="myApp">
 <head>
 	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
+	<link rel="stylesheet" type="text/css" href="styles/lobby.css">
+	
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="js/angular-socket-io/socket.min.js"></script>
 	<script type="text/javascript">
 		var host = '<%= host %>';
-		
 	</script>
 </head>
 <body>
-<div class="container" ng-controller="LobbyController">
-	<h2>Hi <%= user.fullname %> </h2>
-	<!-- <h2>Hi <%= user.google.fullname %> </h2> -->
-	<div> <img src="<%= user.profilePic %>"></div>
+ <div class="container" ng-controller="LobbyController">
+ 	<% if (user.facebook && user.facebook.fullname) { %>
+		<span>Hi, <%= user.facebook.fullname %></span>
+		<img src="<%= user.facebook.profilePic %>">
+	<% } else { %>
+		<span>Hi, <%= user.google.fullname %></span>
+	<% } %>
 	<a href="/logout">logout</a>
-	<input type="text" id="newTableName" name="" ng-model="newTableName">
-	<div id="createTable" ng-click="createTable()">Create Table</div>
-	<div class="tableListWrap">
-		<ul class="tableList">
-			<li ng-repeat="table in tables">
-				<a href="table/{{table.tableNum}}">{{table.tableName}}</a>
+    <div class="newTables">
+        <input id="newTableName" type="text" ng-model="newTableName" ng-keydown="newTableKeyDown($event)"  class="newTable" autocomplete="off" placeholder="create a table" autofocus>
+        <button id="createTable" ng-click="createTable()">New Table</button>
+    </div>
+    <div class="tablelistWrap">
+        <ul class="tablelist">
+        	<li ng-repeat="table in tables">
+				<a href="table/{{table.num}}">{{table.name}}</a>
 			</li>
-		</ul>
-	</div>
-	<script type="text/javascript" src="js/lobby.js"></script>
+        </ul>
+    </div>
 </div>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/angular-socket-io/socket.min.js"></script>
+<script type="text/javascript" src="js/lobbyController.js"></script>
+<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

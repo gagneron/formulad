@@ -1,0 +1,9 @@
+<div>
+	<ul>
+		<li ng-repeat="message in $ctrl.chatMessages">
+			<b>{{message.userName}}</b>: {{message.message}}
+		</li>
+	</ul>
+
+</div>
+<input type="text" name="" ng-keydown="$ctrl.chatBoxKeyDown($event)" ng-model="$ctrl.newMessage">

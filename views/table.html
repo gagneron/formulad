@@ -1,9 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-	<title></title>
+	<title><%= tableInfo.tableName %></title>
+	<link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../styles/table.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript">
+		var host = '<%= host %>';
+		var tableNum = <%= tableInfo.tableNum %>;
+		<% if (user.facebook && user.facebook.fullname) { %>
+			var userName = '<%= user.facebook.fullname %>';
+			var userPic = '<%= user.facebook.profilePic %>';
+
+		<% } else { %>
+			var userName = '<%= user.google.fullname %>';
+			var userPic = "";
+		<% } %>
+	</script>
 </head>
 <body>
-<%= user %>, <%= tableNum %>,<%= tableName %>, <%= host %>
+<div class="container" ng-controller="TableController">
+	<div>Hello {{userName}}</div>
+	<%= user %>, <%= tableInfo.tableNum %>,<%= tableInfo.tableName %>
+	{{chatMessages}}
+	<table-messaging></table-messaging>
+	<!-- <div>
+		<ul>
+			<li ng-repeat="message in chatMessages">
+				<b>{{message.userName}}</b>: {{message.message}}
+			</li>
+		</ul>
+	</div>
+	<input type="text" name="" ng-keydown="chatBoxKeyDown($event)" ng-model="newMessage"> -->
+</div>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../js/angular-socket-io/socket.min.js"></script>
+<script type="text/javascript" src="../js/tableController.js"></script>
+<script type="text/javascript" src="../js/tableMessaging.component.js"></script>
+
+   
+<script src="//localhost:35729/livereload.js"></script>
+
 </body>
 </html>
