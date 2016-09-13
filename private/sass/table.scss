@@ -1,10 +1,112 @@
+@import 'normalize';
+@import "flexbox";
+@import 'basic';
+
 .container {
   font-size: 16px;
   font-family: Helvetica, Arial;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   width: auto;
-  text-align: center;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 1024px;
   min-width: 300px;
-  padding: 10px !important; }
+  padding: 10px !important; 
+}
+
+.readySelectArea {
+    .qLabel {
+        display: inline-block;
+    }
+}
+
+.userList {
+    .userLi {
+        .username, .readyState {
+            background-color: lightgray;
+        }
+
+        
+        &.playerReady {
+            .username, .readyState {
+                background-color: lightgreen;
+            }
+        }
+    }
+    .username {
+        width: 150px;
+        @include oneLine;
+        float: left;
+    }
+    .readyState {
+        float: left;
+        .readyText {
+            display: none;
+        }
+        .waitingText {
+            // background-color: yellow;
+        }
+        &.playerReady {
+            .readyText {
+                display: block;
+                // background-color: lightgreen;
+            }
+            .waitingText {
+                display: none;
+            }
+        }
+    }
+}
+
+.chatArea {
+	max-width: 700px;
+	display: block;
+}
+
+#chat {
+    height: 120px;
+    overflow: auto;
+    margin: 10px 0px;
+    padding: 4px;
+    overflow-x: hidden;
+    word-break: break-all;
+    background-color: white;
+    border: 2px solid gray;
+    line-height: 20px;
+    .messageRow {
+    	@include flexbox;
+    }
+    .userName {
+    	display: inline-block;
+    	max-width: 130px;
+    	white-space: nowrap;
+    	text-overflow: ellipsis;
+    	overflow: hidden;
+    	float: left;
+    	@include flex(0 0 auto);
+    }
+    .message {
+    	display: inline-block;
+    	@include flex(0 1 auto);
+    }
+
+}
+
+#message {
+    width: 590px;
+    font-size:16px;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px;
+    background-color: white;
+    color: #444444;
+}
+
+.sendBtn {
+    height: 30px;
+    width: 100px;
+    float: right;
+    font-weight: bold;
+    border: 2px solid gray;
+    background-color: transparent;
+}
+

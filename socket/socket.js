@@ -16,8 +16,9 @@ module.exports = function(io, tables) {
 		socket.on('newTable', function(data) {
 			var table = new Table(data.tableName, data.tableNum);
 			tables.push(table);
-			socket.broadcast.emit('tableUpdate', JSON.stringify(tables)); // send to everyone except active socket
-			socket.emit('tableUpdate', JSON.stringify(tables)); // send to only the active socket
+			lobby.emit('tableUpdate', JSON.stringify(tables)); // everyone
+			// socket.broadcast.emit('tableUpdate', JSON.stringify(tables)); // send to everyone except active socket
+			// socket.emit('tableUpdate', JSON.stringify(tables)); // send to only the active socket
 		});
 	});
 };

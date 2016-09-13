@@ -1,9 +1,10 @@
-<div>
-	<ul>
-		<li ng-repeat="message in $ctrl.chatMessages">
-			<b>{{message.userName}}</b>: {{message.message}}
-		</li>
-	</ul>
-
+<div id="chat">
+	<div ng-repeat="message in $ctrl.chatMessages" class="clearfix messageRow">
+		<b class="userName">{{message.userName}}</b>: <span class="message">{{message.message}}</span>
+	</div>
 </div>
-<input type="text" name="" ng-keydown="$ctrl.chatBoxKeyDown($event)" ng-model="$ctrl.newMessage">
+<div class="chatInputArea">
+	<input type="text" name="messagexyz" autocomplete="new-password" style="display: none;">
+	<input id="message" autocomplete="new-password"" type="text" name="messagexyz" ng-keydown="$ctrl.chatBoxKeyDown($event)" ng-model="$ctrl.newMessage">
+	<input class="btn sendBtn" type="submit" value="send">
+</div>

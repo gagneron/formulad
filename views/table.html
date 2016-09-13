@@ -2,9 +2,10 @@
 <html ng-app="myApp">
 <head>
 	<title><%= tableInfo.tableName %></title>
-	<link rel="stylesheet" type="text/css" href="../styles/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../styles/table.css">
+	<link rel="stylesheet" type="text/css" href="../styles/normalize.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	
 	<script type="text/javascript">
 		var host = '<%= host %>';
 		var tableNum = <%= tableInfo.tableNum %>;
@@ -17,13 +18,53 @@
 			var userPic = "";
 		<% } %>
 	</script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../js/angular-socket-io/socket.min.js"></script>
+<script type="text/javascript" src="../js/tableController.js"></script>
+<script type="text/javascript" src="../js/tableMessaging.component.js"></script>
+
+	<style type="text/css">
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+	</style>
 </head>
 <body>
 <div class="container" ng-controller="TableController">
-	<div>Hello {{userName}}</div>
-	<%= user %>, <%= tableInfo.tableNum %>,<%= tableInfo.tableName %>
-	{{chatMessages}}
-	<table-messaging></table-messaging>
+	<div>Hello <% if (user.facebook && user.facebook.fullname) { %>
+			<%= user.facebook.fullname %>
+
+		<% } else { %>
+			<%= user.google.fullname %>
+		<% } %>
+			
+	</div>
+	<div class="readySelectArea">
+		<div class="qLabel">Ready to start?</div>
+		<label>
+			<input type="radio" ng-model="playerReady" ng-value="true" ng-change="updateReadyState()">
+			Yes
+		</label>
+		<label>
+			<input type="radio" ng-model="playerReady" ng-value="false" ng-change="updateReadyState()" checked>
+			No
+		</label>
+	</div>
+	
+	<div>
+		<h3>Users:</h3>
+		<ul class="userList">
+			<li class="userLi clearfix" ng-repeat="user in users" ng-class="{playerReady: user.isReady}" ng-cloak>
+				<div class="username">{{user.name}}</div>
+				<div class="readyState" ng-class="{playerReady: user.isReady}">
+					<div class="readyText">Ready</div><div class="waitingText">Waiting</div>
+				</div>
+			</li>
+		</ul>
+		
+	</div>
+	
+	<table-messaging class="chatArea" ng-cloak></table-messaging>
 	<!-- <div>
 		<ul>
 			<li ng-repeat="message in chatMessages">
@@ -33,13 +74,17 @@
 	</div>
 	<input type="text" name="" ng-keydown="chatBoxKeyDown($event)" ng-model="newMessage"> -->
 </div>
-<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script type="text/javascript" src="../js/angular-socket-io/socket.min.js"></script>
-<script type="text/javascript" src="../js/tableController.js"></script>
-<script type="text/javascript" src="../js/tableMessaging.component.js"></script>
-
    
 <script src="//localhost:35729/livereload.js"></script>
-
+<script type="text/javascript">
+	 // setInterval(function() {
+  //           $.get( "http://secretagents.herokuapp.com", function() {
+  //               console.log( "success" );
+  //           })
+  //           .fail(function() {
+  //               console.log('fail')
+  //           });
+  //       }, 1500000);
+</script>
 </body>
 </html>

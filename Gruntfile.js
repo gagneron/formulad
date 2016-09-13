@@ -5,6 +5,9 @@ module.exports = function(grunt) {
             sass: {
                 files: 'private/sass/*.scss',
                 tasks: ['sass'],
+                options: {
+                    atBegin: true
+                }
                 // options: {
                 //     livereload: true
                 // }
@@ -12,13 +15,15 @@ module.exports = function(grunt) {
             other: {
                 files: ['views/*.html',  'Gruntfile.js', 'package.json'],
                 options: {
-                    livereload: true
+                    livereload: true,
+                    atBegin: true
                 }
             },
             css: {
                 files: 'public/styles/*.css',
                 options: {
-                    livereload: true
+                    livereload: true,
+                    atBegin: true
                 }
             }
             // concat: {

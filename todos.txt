@@ -1,0 +1,5 @@
+- create list of users and their ready states
+- allow users to toggle ready state
+- remove users from table list when disconnecting
+
+

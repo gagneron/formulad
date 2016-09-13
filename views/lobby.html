@@ -26,7 +26,7 @@
     </div>
     <div class="tablelistWrap">
         <ul class="tablelist">
-        	<li ng-repeat="table in tables">
+        	<li ng-repeat="table in tables" ng-cloak>
 				<a href="table/{{table.num}}">{{table.name}}</a>
 			</li>
         </ul>

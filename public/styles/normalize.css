@@ -428,3 +428,20 @@ div, ul, li, span, section, header, p, table, tr, td, th, input, textarea {
   margin: 0;
   padding: 0;
 }
+
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+ul > li {
+  list-style-type: none;
+}
