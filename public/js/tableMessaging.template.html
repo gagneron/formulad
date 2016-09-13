@@ -6,5 +6,5 @@
 <div class="chatInputArea">
 	<input type="text" name="messagexyz" autocomplete="new-password" style="display: none;">
 	<input id="message" autocomplete="new-password"" type="text" name="messagexyz" ng-keydown="$ctrl.chatBoxKeyDown($event)" ng-model="$ctrl.newMessage">
-	<input class="btn sendBtn" type="submit" value="send">
+	<input class="btn sendBtn" type="submit" value="send" ng-click="$ctrl.sendChatMessage()">
 </div>

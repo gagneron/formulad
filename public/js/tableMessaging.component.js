@@ -8,31 +8,28 @@
 		self.chatMessages = [];
 
 		socket.on('incomingChatMessage', function(data) {
-				console.log('incoming', data);
-				self.chatMessages.push(data);
-			});
+			self.chatMessages.push(data);
+		});
 
-			console.log('ya?', self);
-
-			function sendChatMessage() {
-				// var tableName = $('#newTableName').val();
-				var newMessage = self.newMessage;
-				if (newMessage.trim() !== "") {
-					
-					socket.emit('chatFeed', {
-						message: newMessage,
-						userName: userName,
-						tableNum: tableNum
-					});
-					self.newMessage = "";
-				}
+		function sendChatMessage() {
+			var newMessage = self.newMessage;
+			if (newMessage.trim() !== "") {
+				socket.emit('chatFeed', {
+					message: newMessage,
+					userName: userName,
+					tableNum: tableNum
+				});
+				self.newMessage = "";
 			}
+		}
 
-			self.chatBoxKeyDown = function($event) {
-				if ($event.which === 13) {
-					sendChatMessage();
-				}
-			};
+		self.chatBoxKeyDown = function($event) {
+			if ($event.which === 13) {
+				sendChatMessage();
+			}
+		};
+
+		self.sendChatMessage = sendChatMessage;
 	}]});
 
 	// app.directive('tableMessaging', function() {
